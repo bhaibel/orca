@@ -8,7 +8,7 @@ describe('store', () => {
   it('can set current passage', () => {
     const store = configureStore()
     store.commit('setCurrentPassage', 'a-name')
-    expect(store.state.currentPassage).to.equal('a-name')
+    expect(store.getters.currentPassage).to.equal('a-name')
   })
 
   it('can load passages', () => {

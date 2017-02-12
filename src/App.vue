@@ -1,17 +1,26 @@
 <template>
   <div id="app">
-    <component :is='passage' />
+    <transition-group name="passage__transition" tag="div">
+      <passage-container v-for='(passage, index) in passageComponentHistory'
+                         :passage='passage'
+                         :active='index === passageComponentHistory.length - 1'
+                         :key='passage'
+                         />
+    </transition-group>
+
   </div>
 </template>
 
 <script>
 import { mapGetters } from 'vuex'
+import PassageContainer from './components/PassageContainer'
 
 export default {
   name: 'app',
-  computed: mapGetters({
-    passage: 'currentPassageComponent'
-  })
+  computed: mapGetters(['passageComponentHistory']),
+  components: {
+    PassageContainer
+  }
 }
 </script>
 

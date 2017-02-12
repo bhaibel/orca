@@ -11,7 +11,8 @@ export default function compilePassage (passagedataNode) {
     name,
     component: {
       name: `passage--${name.replace(/[ $]/g, '-')}`,
-      template: `<div>${compiledText}</div>`
+      template: `<div :class='passageClass'>${compiledText}</div>`,
+      props: ['passageClass']
     }
   }
 }

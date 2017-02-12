@@ -8,7 +8,9 @@ export default {
   props: ['to'],
   methods: {
     go () {
-      this.$store.commit('setCurrentPassage', this.to)
+      if (this.$store.getters.passageForKey(this.to)) {
+        this.$store.commit('setCurrentPassage', this.to)
+      }
     }
   }
 }
