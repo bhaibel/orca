@@ -10,7 +10,7 @@ export default function compilePassage (passagedataNode) {
     pid,
     name,
     component: {
-      name: `passage--${name}`,
+      name: `passage--${name.replace(/[ $]/g, '-')}`,
       template: `<div>${compiledText}</div>`
     }
   }
@@ -18,6 +18,7 @@ export default function compilePassage (passagedataNode) {
 
 function addLinks (text) {
   return text.replace(/\[\[(.+?)\]\]/g, function (_linkTag, link) {
+    debugger
     let to, linkText
     if (link.match(/-&gt;/)) {
       [linkText, to] = link.split('-&gt;')
