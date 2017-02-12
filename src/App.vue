@@ -1,14 +1,17 @@
 <template>
   <div id="app">
-    <component v-for='passage in passages'
-               :is='passage' />
+    <component :is='passage' />
   </div>
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+
 export default {
   name: 'app',
-  props: ['passages']
+  computed: mapGetters({
+    passage: 'currentPassageComponent'
+  })
 }
 </script>
 
