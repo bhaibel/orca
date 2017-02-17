@@ -10,7 +10,7 @@ StoryFormatPlugin.prototype.apply = function(compiler) {
     delete compilation.assets['index.html']
     compilation.assets['storyFormat.js'] = {
       source: function() {
-        return JSON.stringify({
+        const json = JSON.stringify({
           description: pkg.description,
           author: pkg.author.replace(/ <.*>/, ''),
           image: 'icon.svg',
@@ -20,6 +20,7 @@ StoryFormatPlugin.prototype.apply = function(compiler) {
           proofing: false,
           source: sourceFile
         })
+        return `window.storyFormat(${json});`
       },
       size: function() {
         return null
