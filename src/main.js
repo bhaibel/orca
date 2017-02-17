@@ -29,10 +29,6 @@ const store = configureStore()
 store.commit('hydratePassages', passages)
 store.commit('setCurrentPassage', startingPassage.name)
 
-// store.subscribe('setCurrentPassage', () => {
-//   alert('yolo')
-// })
-
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

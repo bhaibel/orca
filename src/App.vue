@@ -1,9 +1,9 @@
 <template>
   <div id="app">
     <transition-group name="passage__transition" tag="div">
-      <passage-container v-for='(passage, index) in passageComponentHistory'
+      <passage-container v-for='(passage, index) in passageHistory'
                          :passage='passage'
-                         :active='index === passageComponentHistory.length - 1'
+                         :active='index === passageHistory.length - 1'
                          :key='passage'
                          />
     </transition-group>
@@ -17,7 +17,7 @@ import PassageContainer from './components/PassageContainer'
 
 export default {
   name: 'app',
-  computed: mapGetters(['passageComponentHistory']),
+  computed: mapGetters(['passageHistory']),
   components: {
     PassageContainer
   }
